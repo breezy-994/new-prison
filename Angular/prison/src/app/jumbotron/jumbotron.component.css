@@ -1,0 +1,8 @@
+.jumbotron {
+    background: url("https://vignette.wikia.nocookie.net/gotham-inc/images/c/c2/BGP-wide-angle.png/revision/latest?cb=20200114160938") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: white;
+}

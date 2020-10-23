@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row">
+    <div class="col my-4">
+      <h1>Crea Nuovo Dossier:</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <label for="RicercaPerPrisonerCF">Ricerca Per Cf il Prisoner:</label>
+        <input id="RicercaPerPrisonerCF" class="form-control" [(ngModel)]="cf" type="text" placeholder="Cf">
+      </div>
+    </div>
+    <div class="col">
+      <button (click)=ricercaPrisoner() type="button" class="btn btn-dark my-4 float-right" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Cerca</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+            <h4 *ngIf="this.id==-2">CF già utilizzato!</h4>
+            <h4 *ngIf="this.id==-1"> Non trovato-Aggiungi Prisoner</h4>
+            <h4 *ngIf="this.id>0"> Trovato</h4>
+        <div *ngIf="this.id==-1" class="form-group">
+          <label for="Name">Name</label>
+          <input id="Name" class="form-control" [(ngModel)]="newprisoner.nome" type="text" placeholder="Name">
+        </div>
+
+        <div *ngIf="this.id==-1" class="form-group">
+            <label for="Surname">Surname</label>
+            <input id="Surname" class="form-control" [(ngModel)]="newprisoner.cognome" type="text" placeholder="Surname">
+        </div>
+
+        <button *ngIf="this.id==-1" (click)=avantiPrisoner() type="button" class="btn btn-dark mx-2 float-right" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">Avanti</button>
+        <button (click)=avanti() *ngIf="this.id>0" type="button" class="btn btn-dark mx-2 float-right" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">Avanti</button>
+
+        </div>
+      </div>
+      </div>
+    </div>
+
+
+  <div class="row">
+      <div class="col">
+            <div class="collapse" id="collapseExample2">
+                  <div class="card card-body">
+
+                      <div class="form-group">
+                        <label for="dataCarcerazione">Data Carcerazione:</label>
+                        <input id="dataCarcerazione" class="form-control" [(ngModel)]="dossier.dataCarcerazione" type="text" placeholder="Data Carcerazione">
+                      </div>
+
+                        <div class="form-group">
+                            <label for="dataScarcerazione">Data Scarcerazione:</label>
+                            <input id="dataScarcerazione" class="form-control" [(ngModel)]="dossier.dataScarcerazione" type="text" placeholder="Data Scarcerazione">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="crimine">Crimine:</label>
+                          <input id="crimine" class="form-control" [(ngModel)]="dossier.crimine" type="text" placeholder="Data Carcerazione">
+                        </div>
+
+                        <button (click)=aggiungi() type="submit" class="btn btn-dark mx-2 float-right">Aggiungi</button>
+
+
+                  </div>
+            </div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-12">
+          <div *ngIf="this.show==true" class="alert alert-danger" role="alert">
+              Ops! si è verificato un problema!
+          </div>
+        </div>
+    </div>
+
+</div>

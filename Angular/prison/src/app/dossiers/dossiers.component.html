@@ -1,0 +1,96 @@
+<app-jumbotron [titolo]="'Prison'" [sottotitolo]="'Dossiers'"> </app-jumbotron>
+<div class="container">
+<div class="row my-2 mb-3">
+<div class="col-12 col-md-6">
+<div class="form-group">
+    <label for="RicercaPerCrimine">Ricerca Per Crimine:</label>
+    <input id="RicercaPerCrimine" class="form-control" [(ngModel)]="crimine" type="text" placeholder="Crimine">
+</div>
+<div class="float-right">
+    <button (click)=RicercaPerCrimine() type="button" class="btn btn-dark ">Ricerca By Crimine</button>
+</div>
+</div>
+<!---
+<div class="col">
+<div class="alert alert-success" *ngIf='messaggio'>
+{{messaggio}}
+</div>
+</div>-->
+<div class="col-12 col-md-6">
+<div class="form-group">
+    <label for="RicercaPerPrisonerCF">Ricerca Per Cf il Prisoner:</label>
+    <input id="RicercaPerPrisonerCF" class="form-control" [(ngModel)]="cfPrisoner" type="text" placeholder="Cf">
+  </div>
+    <button (click)=RicercaPerCfPrisoner() type="button" class="btn btn-dark mx-2 float-right">Ricerca By CfPrisoner</button>
+</div>
+</div>
+
+<div class="row my-2">
+  <div class="col-6 col-md-5 text-md-left pt-3">
+  <div class="font-weight-bold text-uppercase">
+  Number of Dossiers :{{numDossiers}}
+  </div>
+  </div>
+  <div class="col-7 col-md8 text-md-right ">
+  <button (click)=allDossiers() type="button" class="btn btn-dark w-100">AllDossiers</button>
+  </div>
+</div>
+
+<div class="row">
+<div class="col-12">
+<div class="responsive">
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">DataCarcerazione</th>
+      <th scope="col">DataScarcerazione</th>
+      <th scope="col">Crimine</th>
+      <th scope="col">Cf Guard</th>
+      <th scope="col">CF Prisoner</th>
+      <th scope="col">Nome Prisoner</th>
+      <th scope="col">Cognome Prisoner</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let dossier of dossiers">
+      <th scope="row">{{dossier.id}}</th>
+      <td>{{dossier.dataCarcerazione}}</td>
+      <td>{{dossier.dataScarcerazione}}</td>
+      <td>{{dossier.crimine}}</td>
+      <td>
+      <div *ngIf="dossier.guard!=null">{{dossier.guard.cf}}</div>
+      </td>
+      <td>
+      <div *ngIf="dossier.prisoner!=null">{{dossier.prisoner.cf}}</div>
+      </td>
+      <td>
+      <div *ngIf="dossier.prisoner!=null">{{dossier.prisoner.nome}}</div>
+      </td>
+      <td>
+      <div *ngIf="dossier.prisoner!=null">{{dossier.prisoner.cognome}}</div>
+      </td>
+      <td>
+      <div class="btn-group" role="group" aria-label="Basic example">
+      <button  (click)=ModifyDossier(dossier.id) type="button" class="btn btn-light">Modify</button>
+      <button (click)=deleteDossier(dossier.id)  type="button" class="btn btn-light">Remove</button>
+      <button  *ngIf="dossier.prisoner==null" (click)=addPrisoner(dossier.id) type="button" class="btn btn-light">+Nuovo Prisoner</button>
+      <button  *ngIf="dossier.prisoner==null" (click)=addPrisonerExist(dossier.id) type="button" class="btn btn-light">+Prisoner Esistente</button>
+      </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+          <div *ngIf="this.show==true" class="alert alert-danger" role="alert">
+              Ops! si è verificato un problema!
+          </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,65 @@
+<app-jumbotron [titolo]="'Prison'" [sottotitolo]="'Prisoners'"> </app-jumbotron>
+
+<div class="container">
+<div class="row my-2 mb-3">
+
+
+<div class="col-6 col-md-5 text-md-left pt-3">
+<div class="font-weight-bold text-uppercase">
+
+Number of Prisoners :{{numPrisoners}}
+
+</div>
+</div>
+
+<div class="col-12 col-md-6">
+<button (click)=addPrisoner() type="button" class="btn btn-dark mx-2 float-right">Add a Prisoner</button>
+</div>
+
+<!--
+<div class="col">
+<div class="alert alert-success" *ngIf='messaggio'>
+{{messaggio}}
+</div>
+</div>
+-->
+</div>
+
+<div class="row">
+<div class="col-12">
+<div class="responsive">
+<table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Cognome</th>
+      <th scope="col">Codice Fiscale</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let prisoner of prisoners">
+      <th scope="row">{{prisoner.id}}</th>
+      <td>{{prisoner.nome}}</td>
+      <td>{{prisoner.cognome}}</td>
+      <td>{{prisoner.cf}}</td>
+      <td>
+      <div class="btn-group" role="group" aria-label="Basic example">
+      <button  (click)=modifyPrisoner(prisoner.id) type="button" class="btn btn-light">Modify</button>
+      <button  (click)=deletePrisoner(prisoner.id) type="button" class="btn btn-light">Remove</button>
+      </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="row">
+  <div class="col-12">
+          <div *ngIf="this.show==true" class="alert alert-danger" role="alert">
+              Ops! si è verificato un problema!
+          </div>
+  </div>
+</div>

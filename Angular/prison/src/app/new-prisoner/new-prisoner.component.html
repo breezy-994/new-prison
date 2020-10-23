@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col my-4">
+    <h1>Aggiungi prisoner</h1>
+    </div>
+    </div>
+  <div class="row">
+    <div class="col">
+
+  <div class="form-group">
+    <label for="Name">Name</label>
+    <input id="Name" class="form-control" [(ngModel)]="prisoner.nome" type="text" placeholder="Name">
+  </div>
+
+  <div class="form-group">
+    <label for="Surname">Surname</label>
+    <input id="Surname" class="form-control" [(ngModel)]="prisoner.cognome" type="text" placeholder="Surname">
+  </div>
+
+  <div class="form-group">
+    <label for="CF">CF</label>
+    <input id="CF" class="form-control" [(ngModel)]="prisoner.cf" type="text" placeholder="CF">
+  </div>
+
+  <button (click)=newPrisoner() type="submit" class="btn btn-dark mx-2 float-right">Insert</button>
+
+    </div>
+  </div>
+<div class="row">
+  <div class="col-12">
+          <div *ngIf="this.show==true" class="alert alert-danger" role="alert">
+              Ops! si è verificato un problema!
+          </div>
+      </div>
+  </div>
+</div>
